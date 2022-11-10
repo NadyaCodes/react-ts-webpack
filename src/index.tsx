@@ -34,7 +34,6 @@ export default function App(): JSX.Element {
     newTodos.splice(index, 1);
     setTodos(newTodos);
   };
-
   return (
     <Fragment>
       <h1>Todo List</h1>
@@ -50,16 +49,19 @@ export default function App(): JSX.Element {
       <section>
         {todos.map((todo: ITodo, index: number) => (
           <Fragment key={index}>
-            <div
-              style={{ textDecoration: todo.complete ? "line-through" : "" }}
-            >
+            <div>
               {todo.text}
+              {todo.complete ? "✅" : ""}
             </div>
-            <button type="button" onClick={() => completeTodo(index)}>
-              {todo.complete ? "Incomplete" : "Complete"}
+            <button
+              type="button"
+              onClick={() => completeTodo(index)}
+              style={{ color: todo.complete ? "#FFC000" : "black" }}
+            >
+              &#9733;
             </button>
             <button type="button" onClick={() => removeTodo(index)}>
-              &times;
+              &#128465;
             </button>
           </Fragment>
         ))}
